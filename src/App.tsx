@@ -1,12 +1,24 @@
-import { HStack } from "@chakra-ui/react";
-import { Button } from "./components/ui/button";
+import { Grid, GridItem } from "@chakra-ui/react";
 
 const App = () => {
   return (
-    <HStack padding={5}>
-      <Button>Click Me</Button>
-      <Button>Click Me</Button>
-    </HStack>
+    <Grid gridColumn={12}>
+      <GridItem colSpan={12} bg="coral">
+        Navbar
+      </GridItem>
+
+      <GridItem
+        display={{ base: "none", lg: "block" }}
+        colSpan={{ lg: 2 }}
+        bg="gold"
+      >
+        Sidebar
+      </GridItem>
+
+      <GridItem colSpan={{ base: 12, lg: 10 }} bg="dodgerblue">
+        Main
+      </GridItem>
+    </Grid>
   );
 };
 
