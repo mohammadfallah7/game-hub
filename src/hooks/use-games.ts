@@ -23,22 +23,29 @@ export interface Platform {
 const useGames = () => {
   const [games, setGames] = useState<Game[]>([]);
   const [error, setError] = useState<string>("");
+  const [isLoading, setLoading] = useState<boolean>(false);
 
   useEffect(() => {
     const controller = new AbortController();
 
+    setLoading(true);
+
     axiosInstance
       .get<FetchGameResponse>("/games", { signal: controller.signal })
-      .then((response) => setGames(response.data.results))
+      .then((response) => {
+        setGames(response.data.results);
+        setLoading(false);
+      })
       .catch((error: Error) => {
         if (error instanceof CanceledError) return;
         setError(error.message);
+        setLoading(false);
       });
 
     return () => controller.abort();
   }, []);
 
-  return { games, error };
+  return { games, error, isLoading };
 };
 
 export default useGames;
