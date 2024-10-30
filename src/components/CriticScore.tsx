@@ -1,15 +1,16 @@
 import { Badge } from "@chakra-ui/react";
 
 interface ICriticScoreProps {
-  score: number;
+  score?: number;
 }
 
 const CriticScore: React.FC<ICriticScoreProps> = ({ score }) => {
-  const color = score > 75 ? "green" : score > 60 ? "yellow" : "red";
+  const color =
+    score && score > 75 ? "green" : score && score > 60 ? "yellow" : "red";
 
   return (
     <Badge size="md" colorPalette={color}>
-      {score}
+      {score || 0}
     </Badge>
   );
 };
