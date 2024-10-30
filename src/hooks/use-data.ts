@@ -7,40 +7,37 @@ interface FetchDataResponse<T> {
   results: T[];
 }
 
-const useData = <K>(
+const useData = <K, L = unknown>(
   endpoint: string,
   requestConfig?: AxiosRequestConfig,
-  deps?: (string | number | undefined)[]
+  deps: L[] = []
 ) => {
   const [data, setData] = useState<K[]>([]);
   const [error, setError] = useState<string>("");
   const [isLoading, setLoading] = useState<boolean>(false);
 
-  useEffect(
-    () => {
-      const controller = new AbortController();
+  useEffect(() => {
+    const controller = new AbortController();
 
-      setLoading(true);
+    setLoading(true);
 
-      axiosInstance
-        .get<FetchDataResponse<K>>(endpoint, {
-          signal: controller.signal,
-          ...requestConfig,
-        })
-        .then((response) => {
-          setData(response.data.results);
-          setLoading(false);
-        })
-        .catch((error: Error) => {
-          if (error instanceof CanceledError) return;
-          setError(error.message);
-          setLoading(false);
-        });
+    axiosInstance
+      .get<FetchDataResponse<K>>(endpoint, {
+        signal: controller.signal,
+        ...requestConfig,
+      })
+      .then((response) => {
+        setData(response.data.results);
+        setLoading(false);
+      })
+      .catch((error: Error) => {
+        if (error instanceof CanceledError) return;
+        setError(error.message);
+        setLoading(false);
+      });
 
-      return () => controller.abort();
-    },
-    deps ? [endpoint, ...deps] : [endpoint]
-  );
+    return () => controller.abort();
+  }, [endpoint, ...deps]);
 
   return { data, error, isLoading };
 };
