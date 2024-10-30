@@ -1,8 +1,8 @@
 import { ordering } from "@/utilities/constants";
+import React from "react";
+import { BsChevronDown } from "react-icons/bs";
 import { Button } from "./ui/button";
 import { MenuContent, MenuItem, MenuRoot, MenuTrigger } from "./ui/menu";
-import { BsChevronDown } from "react-icons/bs";
-import React from "react";
 
 interface ISortSelectorProps {
   sort: string;
@@ -14,8 +14,8 @@ const SortSelector: React.FC<ISortSelectorProps> = ({ sort, onSort }) => {
 
   return (
     <MenuRoot onSelect={({ value }) => onSort(value)}>
-      <MenuTrigger>
-        <Button size="sm">
+      <MenuTrigger asChild>
+        <Button>
           Ordered by: {el?.label || "Relevance"} <BsChevronDown />
         </Button>
       </MenuTrigger>

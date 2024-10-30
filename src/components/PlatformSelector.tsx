@@ -1,10 +1,9 @@
+import { Platform } from "@/hooks/use-games";
 import usePlatforms from "@/hooks/use-platforms";
+import { Spinner } from "@chakra-ui/react";
+import { BsChevronDown } from "react-icons/bs";
 import { Button } from "./ui/button";
 import { MenuContent, MenuItem, MenuRoot, MenuTrigger } from "./ui/menu";
-import { BsChevronDown } from "react-icons/bs";
-import { Spinner } from "@chakra-ui/react";
-import React from "react";
-import { Platform } from "@/hooks/use-games";
 
 interface IPlatformSelectorProps {
   selectedPlatform: Platform | null;
@@ -19,7 +18,7 @@ const PlatformSelector: React.FC<IPlatformSelectorProps> = ({
 
   return (
     <MenuRoot>
-      <MenuTrigger>
+      <MenuTrigger asChild>
         <Button size="sm">
           {selectedPlatform?.name || "Platforms"}{" "}
           {isLoading ? <Spinner size="sm" /> : <BsChevronDown />}

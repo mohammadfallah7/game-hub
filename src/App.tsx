@@ -3,10 +3,10 @@ import { useState } from "react";
 import GameGrid from "./components/GameGrid";
 import GenreList from "./components/GenreList";
 import Navbar from "./components/Navbar";
-import { Genre } from "./hooks/use-genres";
 import PlatformSelector from "./components/PlatformSelector";
-import { Platform } from "./hooks/use-games";
 import SortSelector from "./components/SortSelector";
+import { Platform } from "./hooks/use-games";
+import { Genre } from "./hooks/use-genres";
 
 export interface GameQuery {
   genre: Genre | null;
