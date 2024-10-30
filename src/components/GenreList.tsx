@@ -1,9 +1,17 @@
-import useGenres from "@/hooks/use-genres";
+import useGenres, { Genre } from "@/hooks/use-genres";
 import getImage from "@/utilities/get-image";
 import { HStack, Image, Link, List } from "@chakra-ui/react";
 import { SkeletonText } from "./ui/skeleton";
 
-const GenreList = () => {
+interface IGenreListProps {
+  selectedGenre: Genre | null;
+  onSelectGenre: (genre: Genre) => void;
+}
+
+const GenreList: React.FC<IGenreListProps> = ({
+  selectedGenre,
+  onSelectGenre,
+}) => {
   const { data: genres, isLoading } = useGenres();
   const skeletons = [1, 2, 3, 4, 5, 6, 7, 8];
 
@@ -24,7 +32,12 @@ const GenreList = () => {
                   objectFit="cover"
                   borderRadius={8}
                 />
-                <Link fontSize="lg">{genre.name}</Link>
+                <Link
+                  onClick={() => onSelectGenre(genre)}
+                  fontSize={selectedGenre?.name === genre.name ? "xl" : "lg"}
+                >
+                  {genre.name}
+                </Link>
               </HStack>
             </List.Item>
           ))}
