@@ -32,8 +32,8 @@ const App = () => {
       </GridItem>
 
       <GridItem colSpan={{ base: 2, lg: 1 }}>
-        <Heading mb={5} fontSize="4xl">
-          {gameQuery.platform?.name || "All"} {gameQuery.genre?.name} Games
+        <Heading mb={5} fontSize="5xl" lineHeight={1.5}>
+          {gameQuery.platform?.name} {gameQuery.genre?.name} Games
         </Heading>
         <HStack mb={5}>
           <PlatformSelector
