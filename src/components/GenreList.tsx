@@ -34,7 +34,10 @@ const GenreList: React.FC<IGenreListProps> = ({
                 />
                 <Link
                   onClick={() => onSelectGenre(genre)}
-                  fontSize={selectedGenre?.name === genre.name ? "xl" : "lg"}
+                  fontSize={selectedGenre?.name === genre.name ? "lg" : "md"}
+                  fontWeight={
+                    selectedGenre?.name === genre.name ? "bold" : "normal"
+                  }
                 >
                   {genre.name}
                 </Link>
