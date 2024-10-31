@@ -6,13 +6,6 @@ import Navbar from "./components/Navbar";
 import PlatformSelector from "./components/PlatformSelector";
 import SortSelector from "./components/SortSelector";
 
-export interface GameQuery {
-  genre: number;
-  platform: number;
-  sort: string;
-  search: string;
-}
-
 const App = () => {
   return (
     <Grid gridColumn={2} gridTemplateColumns={"1fr 5fr"} gap={5} px={4}>
