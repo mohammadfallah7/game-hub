@@ -1,4 +1,4 @@
-import { Platform } from "./platforms.model";
+import { Platform } from "./platform.model";
 
 export type Game = {
   id: number;

@@ -1,4 +1,4 @@
-import { Platform } from "@/types/platforms.model";
+import { Platform } from "@/types/platform.model";
 import { HStack, Icon } from "@chakra-ui/react";
 import { BsGlobe, BsNintendoSwitch } from "react-icons/bs";
 import {

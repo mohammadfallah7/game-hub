@@ -1,6 +1,6 @@
 import platforms from "@/data/platforms";
 import ApiClient from "@/services/api-client";
-import { Platform } from "@/types/platforms.model";
+import { Platform } from "@/types/platform.model";
 import { useQuery } from "@tanstack/react-query";
 import ms from "ms";
 
