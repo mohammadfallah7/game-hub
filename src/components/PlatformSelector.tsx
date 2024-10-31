@@ -25,7 +25,7 @@ const PlatformSelector: React.FC<IPlatformSelectorProps> = ({
         </Button>
       </MenuTrigger>
       <MenuContent>
-        {platforms.map((platform) => (
+        {platforms?.map((platform) => (
           <MenuItem
             onClick={() => onSelectPlatform(platform)}
             key={platform.id}
