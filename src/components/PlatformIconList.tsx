@@ -1,15 +1,17 @@
 import { Platform } from "@/hooks/use-games";
 import { HStack, Icon } from "@chakra-ui/react";
+import { BsGlobe, BsNintendoSwitch } from "react-icons/bs";
 import {
-  FaWindows,
-  FaPlaystation,
-  FaXbox,
-  FaApple,
-  FaLinux,
   FaAndroid,
+  FaApple,
   FaAppStoreIos,
+  FaGamepad,
+  FaLinux,
+  FaPlaystation,
+  FaWindows,
+  FaXbox,
 } from "react-icons/fa6";
-import { BsNintendoSwitch, BsGlobe } from "react-icons/bs";
+import { SiAtari, SiCommodore, SiSega } from "react-icons/si";
 
 interface IPlatformIconListProps {
   platforms: { platform: Platform }[];
@@ -26,6 +28,11 @@ const PlatformIconList: React.FC<IPlatformIconListProps> = ({ platforms }) => {
     web: <BsGlobe />,
     linux: <FaLinux />,
     nintendo: <BsNintendoSwitch />,
+    atari: <SiAtari />,
+    sega: <SiSega />,
+    "commodore-amiga": <SiCommodore />,
+    "3do": <FaGamepad />,
+    "neo-geo": <FaGamepad />,
   };
 
   return (
