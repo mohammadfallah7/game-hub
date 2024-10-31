@@ -1,11 +1,11 @@
 import { Grid, GridItem, HStack } from "@chakra-ui/react";
 import { useState } from "react";
 import GameGrid from "./components/GameGrid";
+import GameHeading from "./components/GameHeading";
 import GenreList from "./components/GenreList";
 import Navbar from "./components/Navbar";
 import PlatformSelector from "./components/PlatformSelector";
 import SortSelector from "./components/SortSelector";
-import GameHeading from "./components/GameHeading";
 
 export interface GameQuery {
   genre: number;
@@ -31,10 +31,7 @@ const App = () => {
       </GridItem>
 
       <GridItem colSpan={{ base: 2, lg: 1 }}>
-        <GameHeading
-          selectedGenre={gameQuery.genre}
-          selectedPlatform={gameQuery.platform}
-        />
+        <GameHeading gameQuery={gameQuery} />
         <HStack mb={5}>
           <PlatformSelector
             selectedPlatform={gameQuery.platform}

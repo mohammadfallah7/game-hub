@@ -1,3 +1,4 @@
+import usePlatform from "@/hooks/use-platform";
 import usePlatforms from "@/hooks/use-platforms";
 import { Spinner } from "@chakra-ui/react";
 import { BsChevronDown } from "react-icons/bs";
@@ -14,10 +15,7 @@ const PlatformSelector: React.FC<IPlatformSelectorProps> = ({
   onSelectPlatform,
 }) => {
   const { data: platforms, isLoading } = usePlatforms();
-
-  const platform = platforms.find(
-    (platform) => platform.id === selectedPlatform
-  );
+  const platform = usePlatform(selectedPlatform);
 
   return (
     <MenuRoot>
