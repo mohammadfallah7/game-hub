@@ -1,4 +1,3 @@
-import { GameQuery } from "@/App";
 import useGames from "@/hooks/use-games";
 import { SimpleGrid, Spinner, Text } from "@chakra-ui/react";
 import InfiniteScroll from "react-infinite-scroll-component";
@@ -6,18 +5,14 @@ import { Fragment } from "react/jsx-runtime";
 import GameCard from "./GameCard";
 import GameCardSkeleton from "./GameCardSkeleton";
 
-interface IGameGridProps {
-  gameQuery: GameQuery;
-}
-
-const GameGrid: React.FC<IGameGridProps> = ({ gameQuery }) => {
+const GameGrid: React.FC = () => {
   const {
     data: games,
     error,
     isLoading,
     fetchNextPage,
     hasNextPage,
-  } = useGames(gameQuery);
+  } = useGames();
   const skeletons = [1, 2, 3, 4, 5, 6];
 
   const dataLength =

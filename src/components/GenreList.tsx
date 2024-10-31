@@ -1,18 +1,13 @@
 import useGenres from "@/hooks/use-genres";
+import useGameQuery from "@/stores/use-game-query";
 import getImage from "@/utilities/get-image";
 import { Heading, HStack, Image, Link, List } from "@chakra-ui/react";
 import { SkeletonText } from "./ui/skeleton";
 
-interface IGenreListProps {
-  selectedGenre: number;
-  onSelectGenre: (genre: number) => void;
-}
-
-const GenreList: React.FC<IGenreListProps> = ({
-  selectedGenre,
-  onSelectGenre,
-}) => {
+const GenreList: React.FC = () => {
   const { data: genres, isLoading } = useGenres();
+  const setGenre = useGameQuery((state) => state.setGenre);
+  const selectedGenre = useGameQuery((state) => state.gameQuery.genre);
   const skeletons = [1, 2, 3, 4, 5, 6, 7, 8];
 
   return (
@@ -35,7 +30,7 @@ const GenreList: React.FC<IGenreListProps> = ({
                     borderRadius={8}
                   />
                   <Link
-                    onClick={() => onSelectGenre(genre.id)}
+                    onClick={() => setGenre(genre.id)}
                     fontSize={selectedGenre === genre.id ? "lg" : "md"}
                     fontWeight={
                       selectedGenre === genre.id ? "semibold" : "normal"

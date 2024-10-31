@@ -4,18 +4,13 @@ import { Spinner } from "@chakra-ui/react";
 import { BsChevronDown } from "react-icons/bs";
 import { Button } from "./ui/button";
 import { MenuContent, MenuItem, MenuRoot, MenuTrigger } from "./ui/menu";
+import useGameQuery from "@/stores/use-game-query";
 
-interface IPlatformSelectorProps {
-  selectedPlatform: number;
-  onSelectPlatform: (platform: number) => void;
-}
-
-const PlatformSelector: React.FC<IPlatformSelectorProps> = ({
-  selectedPlatform,
-  onSelectPlatform,
-}) => {
+const PlatformSelector: React.FC = () => {
   const { data: platforms, isLoading } = usePlatforms();
-  const platform = usePlatform(selectedPlatform);
+  const selectedPlatform = useGameQuery((state) => state.gameQuery.platform);
+  const setPlatform = useGameQuery((state) => state.setPlatform);
+  const platform = usePlatform(selectedPlatform!);
 
   return (
     <MenuRoot>
@@ -28,7 +23,7 @@ const PlatformSelector: React.FC<IPlatformSelectorProps> = ({
       <MenuContent>
         {platforms?.map((platform) => (
           <MenuItem
-            onClick={() => onSelectPlatform(platform.id)}
+            onClick={() => setPlatform(platform.id)}
             key={platform.id}
             value={platform.id.toString()}
           >

@@ -3,17 +3,15 @@ import React from "react";
 import { BsChevronDown } from "react-icons/bs";
 import { Button } from "./ui/button";
 import { MenuContent, MenuItem, MenuRoot, MenuTrigger } from "./ui/menu";
+import useGameQuery from "@/stores/use-game-query";
 
-interface ISortSelectorProps {
-  sort: string;
-  onSort: (sort: string) => void;
-}
-
-const SortSelector: React.FC<ISortSelectorProps> = ({ sort, onSort }) => {
+const SortSelector: React.FC = () => {
+  const sort = useGameQuery((state) => state.gameQuery.sort);
+  const setSort = useGameQuery((state) => state.setSort);
   const el = ordering.find((o) => o.value === sort);
 
   return (
-    <MenuRoot onSelect={({ value }) => onSort(value)}>
+    <MenuRoot onSelect={({ value }) => setSort(value)}>
       <MenuTrigger asChild>
         <Button size="sm">
           Ordered by: {el?.label || "Relevance"} <BsChevronDown />
