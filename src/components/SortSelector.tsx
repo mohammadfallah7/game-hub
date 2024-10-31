@@ -15,7 +15,7 @@ const SortSelector: React.FC<ISortSelectorProps> = ({ sort, onSort }) => {
   return (
     <MenuRoot onSelect={({ value }) => onSort(value)}>
       <MenuTrigger asChild>
-        <Button>
+        <Button size="sm">
           Ordered by: {el?.label || "Relevance"} <BsChevronDown />
         </Button>
       </MenuTrigger>
