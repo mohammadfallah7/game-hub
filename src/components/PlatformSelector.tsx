@@ -1,5 +1,5 @@
-import { Platform } from "@/hooks/use-games";
 import usePlatforms from "@/hooks/use-platforms";
+import { Platform } from "@/types/platforms.model";
 import { Spinner } from "@chakra-ui/react";
 import { BsChevronDown } from "react-icons/bs";
 import { Button } from "./ui/button";

@@ -1,12 +1,7 @@
 import genres from "@/data/genres";
 import axiosInstance, { FetchDataResponse } from "@/services/api-client";
+import { Genre } from "@/types/genre.model";
 import { useQuery } from "@tanstack/react-query";
-
-export interface Genre {
-  id: number;
-  name: string;
-  image_background: string;
-}
 
 const useGenres = () =>
   useQuery({

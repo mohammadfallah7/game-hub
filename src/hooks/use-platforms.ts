@@ -1,7 +1,7 @@
 import platforms from "@/data/platforms";
 import axiosInstance, { FetchDataResponse } from "@/services/api-client";
+import { Platform } from "@/types/platforms.model";
 import { useQuery } from "@tanstack/react-query";
-import { Platform } from "./use-games";
 
 const usePlatforms = () =>
   useQuery({

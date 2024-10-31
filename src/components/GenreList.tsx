@@ -1,4 +1,5 @@
-import useGenres, { Genre } from "@/hooks/use-genres";
+import useGenres from "@/hooks/use-genres";
+import { Genre } from "@/types/genre.model";
 import getImage from "@/utilities/get-image";
 import { Heading, HStack, Image, Link, List } from "@chakra-ui/react";
 import { SkeletonText } from "./ui/skeleton";
