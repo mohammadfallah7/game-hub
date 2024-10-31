@@ -1,7 +1,7 @@
 import { Input } from "@chakra-ui/react";
-import { InputGroup } from "./ui/input-group";
-import { FaSearch } from "react-icons/fa";
 import { useRef } from "react";
+import { FaSearch } from "react-icons/fa";
+import { InputGroup } from "./ui/input-group";
 
 interface ISearchInputProps {
   onSearch: (search: string) => void;

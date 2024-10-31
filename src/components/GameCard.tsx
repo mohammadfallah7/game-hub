@@ -1,9 +1,9 @@
 import { Game } from "@/hooks/use-games";
-import { Card, Heading, HStack, Image } from "@chakra-ui/react";
-import PlatformIconList from "./PlatformIconList";
-import CriticScore from "./CriticScore";
 import getImage from "@/utilities/get-image";
+import { Card, Heading, HStack, Image } from "@chakra-ui/react";
+import CriticScore from "./CriticScore";
 import Emoji from "./Emoji";
+import PlatformIconList from "./PlatformIconList";
 
 interface IGameCardProps {
   game: Game;
