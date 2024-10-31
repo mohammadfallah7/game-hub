@@ -13,7 +13,7 @@ const GameGrid: React.FC<IGameGridProps> = ({ gameQuery }) => {
   const { data: games, error, isLoading } = useGames(gameQuery);
   const skeletons = [1, 2, 3, 4, 5, 6];
 
-  if (error) return <Text>{error}</Text>;
+  if (error) return <Text color="red.solid">{error}</Text>;
 
   return (
     <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} gap={5}>
