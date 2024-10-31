@@ -25,7 +25,7 @@ const GenreList: React.FC<IGenreListProps> = ({
                 <SkeletonText />
               </List.Item>
             ))
-          : genres.map((genre) => (
+          : genres?.map((genre) => (
               <List.Item key={genre.id} pb={3}>
                 <HStack>
                   <Image
