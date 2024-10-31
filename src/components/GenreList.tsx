@@ -1,12 +1,11 @@
 import useGenres from "@/hooks/use-genres";
-import { Genre } from "@/types/genre.model";
 import getImage from "@/utilities/get-image";
 import { Heading, HStack, Image, Link, List } from "@chakra-ui/react";
 import { SkeletonText } from "./ui/skeleton";
 
 interface IGenreListProps {
-  selectedGenre: Genre | null;
-  onSelectGenre: (genre: Genre) => void;
+  selectedGenre: number;
+  onSelectGenre: (genre: number) => void;
 }
 
 const GenreList: React.FC<IGenreListProps> = ({
@@ -36,10 +35,10 @@ const GenreList: React.FC<IGenreListProps> = ({
                     borderRadius={8}
                   />
                   <Link
-                    onClick={() => onSelectGenre(genre)}
-                    fontSize={selectedGenre?.name === genre.name ? "lg" : "md"}
+                    onClick={() => onSelectGenre(genre.id)}
+                    fontSize={selectedGenre === genre.id ? "lg" : "md"}
                     fontWeight={
-                      selectedGenre?.name === genre.name ? "bold" : "normal"
+                      selectedGenre === genre.id ? "semibold" : "normal"
                     }
                   >
                     {genre.name}

@@ -1,13 +1,12 @@
 import usePlatforms from "@/hooks/use-platforms";
-import { Platform } from "@/types/platforms.model";
 import { Spinner } from "@chakra-ui/react";
 import { BsChevronDown } from "react-icons/bs";
 import { Button } from "./ui/button";
 import { MenuContent, MenuItem, MenuRoot, MenuTrigger } from "./ui/menu";
 
 interface IPlatformSelectorProps {
-  selectedPlatform: Platform | null;
-  onSelectPlatform: (platform: Platform) => void;
+  selectedPlatform: number;
+  onSelectPlatform: (platform: number) => void;
 }
 
 const PlatformSelector: React.FC<IPlatformSelectorProps> = ({
@@ -16,18 +15,22 @@ const PlatformSelector: React.FC<IPlatformSelectorProps> = ({
 }) => {
   const { data: platforms, isLoading } = usePlatforms();
 
+  const platform = platforms.find(
+    (platform) => platform.id === selectedPlatform
+  );
+
   return (
     <MenuRoot>
       <MenuTrigger asChild>
         <Button size="sm">
-          {selectedPlatform?.name || "Platforms"}{" "}
+          {platform?.name || "Platforms"}
           {isLoading ? <Spinner size="sm" /> : <BsChevronDown />}
         </Button>
       </MenuTrigger>
       <MenuContent>
         {platforms?.map((platform) => (
           <MenuItem
-            onClick={() => onSelectPlatform(platform)}
+            onClick={() => onSelectPlatform(platform.id)}
             key={platform.id}
             value={platform.id.toString()}
           >
