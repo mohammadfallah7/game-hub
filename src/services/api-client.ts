@@ -21,6 +21,13 @@ class ApiClient<T> {
 
     return response.data.results;
   }
+
+  async read(id: string | number) {
+    const response = await axiosInstance.get<T>(this.endpoint + "/" + id);
+
+    console.log(response.data);
+    return response.data;
+  }
 }
 
 export default ApiClient;

@@ -30,7 +30,7 @@ const GameGrid: React.FC = () => {
       hasMore={hasNextPage}
       loader={<Spinner />}
     >
-      <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} gap={5} mb={5}>
+      <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} gap={5} p={2}>
         {isLoading
           ? skeletons.map((skeleton) => <GameCardSkeleton key={skeleton} />)
           : games?.pages.map((games, index) => (
