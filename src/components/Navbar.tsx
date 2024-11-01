@@ -5,7 +5,7 @@ import { ColorModeButton } from "./ui/color-mode";
 
 const Navbar: React.FC = () => {
   return (
-    <HStack>
+    <HStack mb={5}>
       <Image src={logo} boxSize="60px" />
       <SearchInput />
       <ColorModeButton />
