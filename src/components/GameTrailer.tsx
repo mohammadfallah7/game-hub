@@ -10,7 +10,7 @@ const GameTrailer: React.FC<IGameTrailerProps> = ({ gameId }) => {
   const first = trailers?.[0];
 
   return first ? (
-    <Box mt={5}>
+    <Box>
       <video src={first.data.max} controls poster={first.preview} />
     </Box>
   ) : null;

@@ -9,7 +9,7 @@ interface IGameAttributesProps {
 
 const GameAttributes: React.FC<IGameAttributesProps> = ({ game }) => {
   return (
-    <SimpleGrid columns={2} gapY={5} mt={5}>
+    <SimpleGrid columns={2} gapY={5} mt={8}>
       <DefinitionItem term="Platforms">
         {game.parent_platforms.map(({ platform }) => (
           <Text key={platform.id}>{platform.name}</Text>

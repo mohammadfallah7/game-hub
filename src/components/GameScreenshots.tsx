@@ -1,5 +1,5 @@
 import useScreenshots from "@/hooks/use-screenshots";
-import { Image, SimpleGrid } from "@chakra-ui/react";
+import { Image, SimpleGrid, Skeleton } from "@chakra-ui/react";
 import React from "react";
 
 interface IGameScreenshotsProps {
@@ -8,16 +8,23 @@ interface IGameScreenshotsProps {
 
 const GameScreenshots: React.FC<IGameScreenshotsProps> = ({ slug }) => {
   const { data: screenshots, error, isLoading } = useScreenshots(slug);
-
-  if (isLoading) return null;
+  const skeletons = [1, 2, 3, 4, 5, 6];
 
   if (error) throw error;
 
   return (
-    <SimpleGrid columns={{ base: 1, lg: 2 }} gap={5} mt={5}>
-      {screenshots?.map((screenshot) => (
-        <Image borderRadius={5} key={screenshot.id} src={screenshot.image} />
-      ))}
+    <SimpleGrid columns={{ base: 1, md: 2 }} gap={5} my={8}>
+      {isLoading
+        ? skeletons.map((skeleton) => (
+            <Skeleton key={skeleton} height="150px" />
+          ))
+        : screenshots?.map((screenshot) => (
+            <Image
+              borderRadius={5}
+              key={screenshot.id}
+              src={screenshot.image}
+            />
+          ))}
     </SimpleGrid>
   );
 };
