@@ -1,4 +1,5 @@
 import useScreenshots from "@/hooks/use-screenshots";
+import getImage from "@/utilities/get-image";
 import { Image, SimpleGrid, Skeleton } from "@chakra-ui/react";
 import React from "react";
 
@@ -21,8 +22,9 @@ const GameScreenshots: React.FC<IGameScreenshotsProps> = ({ slug }) => {
         : screenshots?.map((screenshot) => (
             <Image
               borderRadius={5}
+              objectFit="cover"
               key={screenshot.id}
-              src={screenshot.image}
+              src={getImage(screenshot.image)}
             />
           ))}
     </SimpleGrid>
