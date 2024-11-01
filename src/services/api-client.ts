@@ -25,7 +25,6 @@ class ApiClient<T> {
   async read(id: string | number) {
     const response = await axiosInstance.get<T>(this.endpoint + "/" + id);
 
-    console.log(response.data);
     return response.data;
   }
 }
